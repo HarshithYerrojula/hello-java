@@ -26,12 +26,13 @@ pipeline {
   }
 
   stage('Build DEB') {
-   steps {
-    sh '''
-     fpm -s dir -t deb -n hello-java -v 1.0 -C package usr
-    '''
-   }
-  }
+ steps {
+  sh '''
+   rm -f *.deb
+   fpm -s dir -t deb -n hello-java -v 1.0 -C package usr
+  '''
+ }
+}
 
  }
 
